@@ -16,7 +16,7 @@ export const personalInfo = {
   whatsapp: "https://wa.me/8801408086610",
   github: "https://github.com/saifur18234",
   linkedin: "https://www.linkedin.com/in/saifur162",
-  portfolioUrl: "https://github.com/Pullock4981/practice-portfolio-ejp-14",
+  portfolioUrl: "https://github.com/saifur18234/my-portfolio",
   resumePdf: "/MD_Saifur_Rahman_Resume.pdf",
 
   bio: {
