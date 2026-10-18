@@ -8,7 +8,8 @@ import Resume from './pages/Resume';
 import { ThemeProvider } from './context/ThemeContext';
 
 function ScrollToTop() {
-  const { pathname, hash } = useLocation();
+  const location = useLocation();
+  const { pathname, hash, state } = location;
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -17,42 +18,34 @@ function ScrollToTop() {
   }, []);
 
   useEffect(() => {
-    if (hash) {
-      const targetId = hash.replace('#', '');
+    const targetId = (hash ? hash.replace('#', '') : state?.scrollTo) || null;
 
-      const scrollToElement = (behavior = 'smooth') => {
+    if (targetId) {
+      let didScroll = false;
+      let attempts = 0;
+      const maxAttempts = 20;
+
+      const performScroll = () => {
+        if (didScroll) return;
         const element = document.getElementById(targetId);
         if (element) {
-          const navOffset = 90; // account for 80px fixed navbar + breathing room
-          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({
-            top: elementPosition - navOffset,
-            behavior,
+          didScroll = true;
+          requestAnimationFrame(() => {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
           });
-          return true;
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(performScroll, 50);
         }
-        return false;
       };
 
-      // Try immediately
-      if (!scrollToElement('auto')) {
-        setTimeout(() => scrollToElement('auto'), 50);
-      }
+      const timer = setTimeout(performScroll, 60);
 
-      // Staged smooth adjustments as components mount and layout stabilizes
-      const t1 = setTimeout(() => scrollToElement('smooth'), 100);
-      const t2 = setTimeout(() => scrollToElement('smooth'), 250);
-      const t3 = setTimeout(() => scrollToElement('smooth'), 500);
-
-      return () => {
-        clearTimeout(t1);
-        clearTimeout(t2);
-        clearTimeout(t3);
-      };
+      return () => clearTimeout(timer);
     } else {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
-  }, [pathname, hash]);
+  }, [pathname, hash, state]);
 
   return null;
 }

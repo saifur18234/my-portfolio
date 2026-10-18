@@ -10,28 +10,7 @@ const ProjectDetails = () => {
 
   const handleBackToProjects = (e) => {
     e.preventDefault();
-    navigate('/#projects');
-
-    const scrollToProjects = () => {
-      const element = document.getElementById('projects');
-      if (element) {
-        const navOffset = 90;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo({
-          top: elementPosition - navOffset,
-          behavior: 'smooth',
-        });
-        return true;
-      }
-      return false;
-    };
-
-    if (!scrollToProjects()) {
-      setTimeout(scrollToProjects, 50);
-    }
-    setTimeout(scrollToProjects, 150);
-    setTimeout(scrollToProjects, 350);
-    setTimeout(scrollToProjects, 600);
+    navigate('/#projects', { state: { scrollTo: 'projects' } });
   };
 
   if (!project) {
