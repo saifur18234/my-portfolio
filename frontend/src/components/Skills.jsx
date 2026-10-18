@@ -4,27 +4,23 @@ import {
   FaJsSquare,
   FaHtml5,
   FaCss3Alt,
-  FaNodeJs,
   FaGitAlt,
   FaNpm,
   FaChrome,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
-  SiBootstrap,
-  SiMongodb,
-  SiFirebase,
   SiVite,
-  SiPostman,
+  SiTypescript,
   SiVercel,
+  SiGithub,
 } from "react-icons/si";
-import { HiOutlineCode, HiOutlineServer, HiOutlineTerminal } from "react-icons/hi";
+import { HiOutlineCode, HiOutlineTerminal, HiOutlineSparkles } from "react-icons/hi";
 
 const categories = [
   { id: "all", name: "All Skills" },
   { id: "frontend", name: "Frontend", icon: HiOutlineCode },
-  { id: "backend", name: "Backend & DB", icon: HiOutlineServer },
-  { id: "tools", name: "Tools & Deploy", icon: HiOutlineTerminal },
+  { id: "tools", name: "Tools & Workflow", icon: HiOutlineTerminal },
 ];
 
 const skillsData = [
@@ -34,25 +30,34 @@ const skillsData = [
     category: "frontend",
     icon: FaReact,
     color: "text-cyan-500",
-    bg: "bg-cyan-50 border-cyan-100",
+    bg: "bg-cyan-50 dark:bg-cyan-950/40 border-cyan-100 dark:border-cyan-900",
     level: "Proficient",
-    description: "Hooks, Router, Context API, Component Lifecycle",
+    description: "Hooks, Components, Router, State Management, JSX",
   },
   {
     name: "JavaScript (ES6+)",
     category: "frontend",
     icon: FaJsSquare,
     color: "text-yellow-500",
-    bg: "bg-yellow-50 border-yellow-100",
+    bg: "bg-yellow-50 dark:bg-yellow-950/40 border-yellow-100 dark:border-yellow-900",
     level: "Proficient",
     description: "Async/Await, DOM manipulation, Array methods, ES6 Modules",
+  },
+  {
+    name: "TypeScript",
+    category: "frontend",
+    icon: SiTypescript,
+    color: "text-blue-500",
+    bg: "bg-blue-50 dark:bg-blue-950/40 border-blue-100 dark:border-blue-900",
+    level: "Working Knowledge",
+    description: "Type annotations, Interfaces, Type inference, React component typing",
   },
   {
     name: "Tailwind CSS",
     category: "frontend",
     icon: SiTailwindcss,
     color: "text-teal-500",
-    bg: "bg-teal-50 border-teal-100",
+    bg: "bg-teal-50 dark:bg-teal-950/40 border-teal-100 dark:border-teal-900",
     level: "Proficient",
     description: "Utility classes, Flex/Grid layouts, Dark mode, Custom themes",
   },
@@ -61,121 +66,74 @@ const skillsData = [
     category: "frontend",
     icon: FaHtml5,
     color: "text-orange-500",
-    bg: "bg-orange-50 border-orange-100",
+    bg: "bg-orange-50 dark:bg-orange-950/40 border-orange-100 dark:border-orange-900",
     level: "Advanced",
-    description: "Semantic elements, SEO optimization, Forms & Accessibility",
+    description: "Semantic elements, SEO optimization, Forms & Accessibility standards",
   },
   {
     name: "CSS3 & Modern Layouts",
     category: "frontend",
     icon: FaCss3Alt,
     color: "text-blue-500",
-    bg: "bg-blue-50 border-blue-100",
+    bg: "bg-blue-50 dark:bg-blue-950/40 border-blue-100 dark:border-blue-900",
     level: "Advanced",
-    description: "Flexbox, CSS Grid, Transitions, Keyframe Animations",
-  },
-  {
-    name: "Bootstrap 5",
-    category: "frontend",
-    icon: SiBootstrap,
-    color: "text-purple-500",
-    bg: "bg-purple-50 border-purple-100",
-    level: "Comfortable",
-    description: "Responsive grid, Utility classes, Modal dialogs",
+    description: "Flexbox, CSS Grid, Transitions, Keyframe Animations, Responsive design",
   },
 
-  // Backend & DB
-  {
-    name: "Node.js (Basics)",
-    category: "backend",
-    icon: FaNodeJs,
-    color: "text-emerald-500",
-    bg: "bg-emerald-50 border-emerald-100",
-    level: "Familiar",
-    description: "Server architecture, Event loop, NPM packages",
-  },
-  {
-    name: "Express.js (Basics)",
-    category: "backend",
-    icon: HiOutlineServer,
-    color: "text-gray-700",
-    bg: "bg-gray-50 border-gray-200",
-    level: "Familiar",
-    description: "Routing, Middleware, RESTful API endpoints",
-  },
-  {
-    name: "MongoDB (CRUD)",
-    category: "backend",
-    icon: SiMongodb,
-    color: "text-emerald-600",
-    bg: "bg-emerald-50 border-emerald-100",
-    level: "Familiar",
-    description: "Collections, Documents, Query filters, Aggregations",
-  },
-  {
-    name: "Firebase",
-    category: "backend",
-    icon: SiFirebase,
-    color: "text-amber-500",
-    bg: "bg-amber-50 border-amber-100",
-    level: "Comfortable",
-    description: "Authentication, Firestore database, Hosting",
-  },
-
-  // Tools & Deployment
-  {
-    name: "Git & GitHub",
-    category: "tools",
-    icon: FaGitAlt,
-    color: "text-orange-600",
-    bg: "bg-orange-50 border-orange-100",
-    level: "Proficient",
-    description: "Branching, Pull Requests, Merge conflicts, Versioning",
-  },
+  // Tools & Workflow
   {
     name: "Vite",
     category: "tools",
     icon: SiVite,
-    color: "text-purple-600",
-    bg: "bg-purple-50 border-purple-100",
+    color: "text-purple-500",
+    bg: "bg-purple-50 dark:bg-purple-950/40 border-purple-100 dark:border-purple-900",
     level: "Proficient",
-    description: "Fast HMR, Bundling, Config plugins, Build optimization",
+    description: "Fast HMR, Build optimization, Bundling, Config plugin setup",
   },
   {
-    name: "Postman",
+    name: "Git & Version Control",
     category: "tools",
-    icon: SiPostman,
+    icon: FaGitAlt,
     color: "text-orange-500",
-    bg: "bg-orange-50 border-orange-100",
-    level: "Comfortable",
-    description: "API testing, Request payloads, Header inspection",
+    bg: "bg-orange-50 dark:bg-orange-950/40 border-orange-100 dark:border-orange-900",
+    level: "Proficient",
+    description: "Branching, Commit discipline, Pull requests, Merge conflict handling",
   },
   {
-    name: "Vercel & Netlify",
+    name: "GitHub",
     category: "tools",
-    icon: SiVercel,
-    color: "text-gray-900",
-    bg: "bg-gray-50 border-gray-200",
+    icon: SiGithub,
+    color: "text-gray-800 dark:text-gray-200",
+    bg: "bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700",
     level: "Proficient",
-    description: "CI/CD auto-deployments, Custom domains, Environment variables",
+    description: "Remote repositories, Open source collaboration, GitHub Pages deployments",
+  },
+  {
+    name: "npm Package Manager",
+    category: "tools",
+    icon: FaNpm,
+    color: "text-red-500",
+    bg: "bg-red-50 dark:bg-red-950/40 border-red-100 dark:border-red-900",
+    level: "Proficient",
+    description: "Dependency management, package.json scripts, lockfiles",
   },
   {
     name: "Chrome DevTools",
     category: "tools",
     icon: FaChrome,
-    color: "text-blue-500",
-    bg: "bg-blue-50 border-blue-100",
+    color: "text-green-500",
+    bg: "bg-green-50 dark:bg-green-950/40 border-green-100 dark:border-green-900",
     level: "Proficient",
-    description: "DOM Inspection, Network tab, Console debugging, Performance",
+    description: "DOM inspection, Network request tracking, Console debugging, Mobile simulation",
   },
   {
-    name: "npm & Ecosystem",
+    name: "Vercel Deployment",
     category: "tools",
-    icon: FaNpm,
-    color: "text-red-500",
-    bg: "bg-red-50 border-red-100",
-    level: "Proficient",
-    description: "Package management, Scripts, Dependency resolution",
+    icon: SiVercel,
+    color: "text-gray-900 dark:text-white",
+    bg: "bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700",
+    level: "Comfortable",
+    description: "Continuous deployment from Git branches, Environment configuration",
   },
 ];
 
@@ -190,82 +148,81 @@ const Skills = () => {
   return (
     <section id="skills" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-semibold uppercase tracking-wider">
-          <HiOutlineCode className="text-blue-600 text-sm" />
-          <span>Technical Arsenal</span>
+      <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider">
+          <HiOutlineSparkles className="text-blue-600 dark:text-blue-400 text-sm" />
+          <span>Technical Expertise</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
-          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Skills</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+          Skills &amp;{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+            Technologies
+          </span>
         </h2>
 
-        <p className="text-base sm:text-lg text-gray-600">
-          The technologies, libraries, and developer tools I leverage to build fast, responsive, and delightful web applications.
+        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300">
+          Technologies and developer workflows I actively use to create responsive, accessible, and maintainable web applications.
         </p>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-6">
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            const isActive = activeTab === cat.id;
+
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveTab(cat.id)}
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? "bg-blue-600 text-white shadow-md shadow-blue-500/25"
+                    : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400"
+                }`}
+              >
+                {Icon && <Icon className="text-base" />}
+                <span>{cat.name}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setActiveTab(cat.id)}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
-              activeTab === cat.id
-                ? "bg-blue-600 text-white shadow-md shadow-blue-500/25 scale-105"
-                : "bg-white text-gray-600 border border-gray-200 hover:border-blue-300 hover:text-blue-600 hover:bg-gray-50"
-            }`}
-          >
-            {cat.name}
-          </button>
-        ))}
-      </div>
-
-      {/* Skills Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* Skills Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredSkills.map((skill) => {
           const Icon = skill.icon;
+
           return (
             <div
               key={skill.name}
-              className="bg-white rounded-2xl border border-gray-200/80 p-5 shadow-xs hover:shadow-lg hover:border-blue-300 transition-all duration-300 group flex flex-col justify-between"
+              className="group p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200/90 dark:border-gray-800 shadow-xs hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center border text-2xl ${skill.bg} ${skill.color} group-hover:scale-110 transition-transform`}
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl border ${skill.bg}`}
                   >
-                    <Icon />
+                    <Icon className={skill.color} />
                   </div>
-
-                  <span
-                    className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${
-                      skill.level === "Advanced"
-                        ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                        : skill.level === "Proficient"
-                        ? "bg-blue-50 text-blue-700 border-blue-200"
-                        : "bg-purple-50 text-purple-700 border-purple-200"
-                    }`}
-                  >
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
                     {skill.level}
                   </span>
                 </div>
 
-                <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {skill.name}
                 </h3>
-
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">
                   {skill.description}
                 </p>
               </div>
 
-              {/* Progress Indicator */}
-              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span className="text-[11px] text-gray-400 font-medium capitalize">
-                  {skill.category}
+              <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs text-gray-400 dark:text-gray-500">
+                <span className="capitalize">{skill.category}</span>
+                <span className="text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-0.5 transition-transform">
+                  Verified In Projects &rarr;
                 </span>
               </div>
             </div>
